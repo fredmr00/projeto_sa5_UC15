@@ -1,9 +1,39 @@
 {% extends 'lambda_app/global/index.html' %}
+
+{% load static %}
+
+{% block title %}Listar Alunos{% endblock title %}
+
+
 {% block content %}
 <form method="POST">
-	{% csrf_token %}
-	<h2>Register</h2>
-	{{ form.as_p }}
-	<input type="submit" value="registrar_aluno" />
+    {% csrf_token %}
+    <h2>Registrar aluno</h2>
+    <div class="fieldWrapper">
+        {{ form.nome.errors }}
+        {{ form.nome.label_tag }}
+        {{ form.nome }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.cpf.errors }}
+        {{ form.cpf.label_tag }}
+        {{ form.cpf }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.email.errors }}
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.telefone.errors }}
+        {{ form.telefone.label_tag }}
+        {{ form.telefone }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.matriculado.errors }}
+        {{ form.matriculado.label_tag }}
+        {{ form.matriculado }}
+    </div>
+    <input type="submit" value="registrar_aluno" />
 </form>
 {% endblock content %}

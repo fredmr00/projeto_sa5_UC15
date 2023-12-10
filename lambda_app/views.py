@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Aluno 
-from .forms import AlunForm 
+from lambda_app.models import Aluno 
+from lambda_app.forms import AlunoForm 
 # Create your views here.
 
 
@@ -14,24 +14,24 @@ def listar(request):
 
 def registrar_aluno(request):
    if request.method == 'POST':
-       formulario = AlunoForm(request.POST)
+       form = AlunoForm(request.POST)
        if form.is_valid():
            form.save()
            return redirect('listar')
    else:
-       formulario = AlunoForm()
-   return render(request, 'lambda_app/partial/formulario_registro.html', {'formulario': formulario})
+       form = AlunoForm()
+   return render(request, 'lambda_app/partial/formulario_registro.html', {'form': form})
 
 def atualizar_registro(request, pk):
    aluno = get_object_or_404(Aluno, pk=pk)
    if request.method == 'POST':
-       formulario = AlunoForm(request.POST, instance=aluno)
-       if formulario.is_valid():
-           formulario.save()
+       form = AlunoForm(request.POST, instance=aluno)
+       if form.is_valid():
+           form.save()
            return redirect('listar')
    else:
        form = AlunoForm(instance=aluno)
-   return render(request, 'lambda_app/partial/formulario_registro.html', {'formulario': formulario})
+   return render(request, 'lambda_app/partial/formulario_registro.html', {'form': form})
 
 def deletar_registro(request, pk):
    aluno = get_object_or_404(Aluno, pk=pk)
