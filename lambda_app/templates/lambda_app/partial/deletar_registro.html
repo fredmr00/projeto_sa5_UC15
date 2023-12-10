@@ -1,0 +1,11 @@
+{% extends 'lambda_app/global/index.html' %}
+{% load static %}
+{% block title %}Deletar Aluno{% endblock title %}
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <h2>Deletar aluno</h2>
+  <p>Deseja realmente deletar o aluno {{ aluno.nome }}?</p>
+  <input type="submit" value="deletar_registro" />
+</form>
+{% endblock content %}

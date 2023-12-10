@@ -1,0 +1,14 @@
+{% extends 'lambda_app/global/index.html' %}
+{% load static %}
+{% block title %}Alterar Aluno{% endblock title %}
+{% block content %}
+
+<link href="{% static "css/styles_registro.css" %}" rel="stylesheet">
+
+<form method="POST">
+  {% csrf_token %}
+  <h2>Alterar registro de aluno</h2>
+  {{ form.as_p }}
+  <input type="submit" value="atualizar_registro" />
+</form>
+{% endblock content %}

@@ -5,31 +5,29 @@
 {% block title %}Listar Alunos{% endblock title %}
 
 {% block content %}
-<h1>lista de alunos</h1>
-<a href="registrar_aluno">Registrar novo aluno</a><br><br>
+
+<link href="{% static "css/styles_lista.css" %}" rel="stylesheet">
+
+<h2>Alunos registrados</h2>
 <table border="1">
    <tr>
        <th>Name</th>
        <th>CPF</th>
        <th>Email</th>
        <th>Telefone</th>
-       <th>Matriculado</th>
-       <th>Action</th>
+       <th>Operações:</th>
    </tr>
-   {% for student in students %}
+   {% for aluno in alunos %}
    <tr>
        <td>{{ aluno.nome }}</td>
        <td>{{ aluno.cpf }}</td>
        <td>{{ aluno.email }}</td>
        <td>{{ aluno.telefone }}</td>
-       <td>{{ aluno.matriculado }}</td>
        <td>
-           <a href="{% url 'atualizar_registro' aluno.id %}">Editar</a>
-           <a href="{% url 'deletar_registro' aluno.id %}">Deletar</a>
+           <a href="/atualizar_registro?pk={{aluno.pk}}">Editar</a>
+           <a href="/deletar_registro?pk={{aluno.pk}}" >Deletar</a>
        </td>
    </tr>
-   {% empty %}
-   <tr><td colspan="6"><b>somente é possível registrar com todos os dados inseridos!</b></td></tr>
    {% endfor %}
 </table>
 

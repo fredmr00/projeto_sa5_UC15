@@ -1,0 +1,19 @@
+.body {
+ background-color:aqua;
+}
+
+body {
+ color: black ;
+}
+
+button {
+ border-radius: 0;
+}
+
+.jumbotron {
+ box-shadow: 0 4px 50px 0 rgba(211,211,1,263);
+}
+
+.col-sm-4 {
+ margin: 0px;
+}

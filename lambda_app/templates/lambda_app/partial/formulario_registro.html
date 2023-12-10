@@ -6,6 +6,10 @@
 
 
 {% block content %}
+
+
+<link href="{% static "css/styles_registro.css" %}" rel="stylesheet">
+
 <form method="POST">
     {% csrf_token %}
     <h2>Registrar aluno</h2>

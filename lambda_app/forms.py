@@ -6,7 +6,6 @@ class AlunoForm(forms.ModelForm):
     cpf = forms.CharField(widget=forms.TextInput())
     email = forms.EmailField(widget=forms.EmailInput())
     telefone = forms.CharField(widget=forms.TextInput())
-    matriculado = forms.BooleanField(widget=forms.CheckboxInput())
     class Meta:
        model = Aluno 
-       fields = ['nome', 'cpf', 'email', 'telefone', 'matriculado']
+       fields = ['nome', 'cpf', 'email', 'telefone']

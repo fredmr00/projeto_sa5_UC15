@@ -5,4 +5,3 @@ class Aluno(models.Model):
    cpf = models.CharField(max_length=11, null=False)
    email = models.EmailField(max_length=200, null=False)
    telefone = models.CharField(max_length=20, null=False)
-   matriculado = models.BooleanField(default=True)

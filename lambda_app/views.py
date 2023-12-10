@@ -17,26 +17,29 @@ def registrar_aluno(request):
        form = AlunoForm(request.POST)
        if form.is_valid():
            form.save()
-           return redirect('listar')
+           return redirect('/listar')
    else:
        form = AlunoForm()
    return render(request, 'lambda_app/partial/formulario_registro.html', {'form': form})
 
-def atualizar_registro(request, pk):
-   aluno = get_object_or_404(Aluno, pk=pk)
+def atualizar_registro(request):
+
+   aluno_id = request.GET.get('pk')
+   aluno = get_object_or_404(Aluno, pk=aluno_id)
    if request.method == 'POST':
        form = AlunoForm(request.POST, instance=aluno)
        if form.is_valid():
            form.save()
-           return redirect('listar')
+           return redirect('/listar')
    else:
        form = AlunoForm(instance=aluno)
-   return render(request, 'lambda_app/partial/formulario_registro.html', {'form': form})
+   return render(request, 'lambda_app/partial/atualizar_registro.html', {'form': form})
 
-def deletar_registro(request, pk):
-   aluno = get_object_or_404(Aluno, pk=pk)
+def deletar_registro(request):
+   aluno_id = request.GET.get('pk')
+   aluno = get_object_or_404(Aluno, pk=aluno_id)
    if request.method == 'POST':
        aluno.delete()
-       return redirect('listar')
+       return redirect('/listar')
    return render(request, 'lambda_app/partial/deletar_registro.html', {'aluno': aluno})
 
