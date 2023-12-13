@@ -8,27 +8,51 @@
 
 <link href="{% static "css/styles_lista.css" %}" rel="stylesheet">
 
-<h2>Alunos registrados</h2>
+<h2>Lista de Alunos</h2>
 <table border="1">
-   <tr>
-       <th>Name</th>
-       <th>CPF</th>
-       <th>Email</th>
-       <th>Telefone</th>
-       <th>Operações:</th>
-   </tr>
-   {% for aluno in alunos %}
-   <tr>
-       <td>{{ aluno.nome }}</td>
-       <td>{{ aluno.cpf }}</td>
-       <td>{{ aluno.email }}</td>
-       <td>{{ aluno.telefone }}</td>
-       <td>
-           <a href="/atualizar_registro?pk={{aluno.pk}}">Editar</a>
-           <a href="/deletar_registro?pk={{aluno.pk}}" >Deletar</a>
-       </td>
-   </tr>
-   {% endfor %}
+    <tr>
+        <td>
+        <form method="get" action="/pesquisa_aluno">
+            {% csrf_token %}
+            <input type="text" id="nome_pesquisado" name="nome_pesquisado" placeholder="Pesquisar nome">
+            <input type="submit" value="buscar">
+        </form>
+        </td>
+         <td>
+        <form method="get" action="/pesquisa_cpf">
+            {% csrf_token %}
+            <input type="text" id="CPF_pesquisado" name="CPF_pesquisado" placeholder="Pesquisar CPF">
+            <input type="submit" value="buscar">
+        </form>
+        </td>
+    </tr>
+    <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Operações:</th>
+    </tr>
+    {% for aluno in alunos %}
+    <tr>
+        <td>{{ aluno.nome }}</td>
+        <td>{{ aluno.cpf }}</td>
+        <td>{{ aluno.email }}</td>
+        <td>{{ aluno.telefone }}</td>
+        <td>
+            <a href="/atualizar_registro?pk={{aluno.pk}}">Editar</a>
+            <a href="/deletar_registro?pk={{aluno.pk}}" >Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
 </table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script>
+$(document).ready(function(){
+   $('#CPF_pesquisado').mask('000.000.000-00');
+});
+</script>
 
 {% endblock content %}

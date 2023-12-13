@@ -1,0 +1,39 @@
+
+{% extends "lambda_app/global/index.html" %}
+
+{% load static %}
+
+{% block title %}Resultados da Pesquisa{% endblock title %}
+
+{% block content %}
+
+<link href="{% static "css/styles_lista.css" %}" rel="stylesheet">
+
+<h2>Resultados da Pesquisa</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Operações:</th>
+        </tr>
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.cpf }}</td>
+            <td>{{ aluno.email }}</td>
+            <td>{{ aluno.telefone }}</td>
+            <td>
+                <a href="/atualizar_registro?pk={{aluno.pk}}">Editar</a>
+                <a href="/deletar_registro?pk={{aluno.pk}}" >Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+
+{% endblock content %}

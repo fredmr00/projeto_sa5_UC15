@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     #meus apps
     "lambda_app",
+
+    #filtro para pesquisa do django
+    "django_filters",
+
+    # controle de cpf
+    "cpf_field",
 ]
 
 MIDDLEWARE = [
