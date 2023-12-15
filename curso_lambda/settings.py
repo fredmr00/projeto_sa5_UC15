@@ -40,11 +40,6 @@ INSTALLED_APPS = [
     #meus apps
     "lambda_app",
 
-    #filtro para pesquisa do django
-    "django_filters",
-
-    # controle de cpf
-    "cpf_field",
 ]
 
 MIDDLEWARE = [
@@ -81,11 +76,22 @@ WSGI_APPLICATION = "curso_lambda.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+#DATABASES = {
+#    "default": {
+#        "ENGINE": "django.db.backends.sqlite3",
+#        "NAME": BASE_DIR / "db.sqlite3",
+#    }
+#}
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'lambdadb',
+       'USER': 'root',
+       'PASSWORD': '12345678',
+       'HOST': '127.0.0.1',
+       'PORT': '3306',
+   }
 }
 
 
