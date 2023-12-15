@@ -20,3 +20,9 @@
 ### https://docs.djangoproject.com/en/4.2/topics/forms/
 
 ### https://www.w3schools.com/bootstrap/bootstrap_ver.asp
+
+
+## Implementação para uso com banco de dados Mysql:
+
+![image](https://github.com/fredmr00/projeto_sa5_UC15/assets/106436581/8ea1dc96-b629-4072-9bb1-62614edb171c)
+
